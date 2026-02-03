@@ -387,29 +387,63 @@
                 </div>
             </div>
 
-            <div id="profile" class="section">
-                <div class="data-card" style="max-width: 800px; margin: 0 auto; display: flex; gap: 40px; align-items: center;">
-                    <div style="flex: 1; text-align: center;">
-                        <img src="https://ui-avatars.com/api/?name=Admin&size=200&background=1e3799&color=fff" style="width: 200px; height: 200px; border-radius: 50%; border: 8px solid #f1f2f6;">
-                        <h2 style="margin-top: 20px;">NGUYỄN QUẢN TRỊ</h2>
-                        <span class="status-pill">ĐANG HOẠT ĐỘNG</span>
-                    </div>
-                    <div style="flex: 2; border-left: 1px solid #eee; padding-left: 40px;">
-                        <h3>THÔNG TIN CHI TIẾT</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                            <div><label style="color:#888;">Mã cán bộ:</label><p><b>AD-2026-X9</b></p></div>
-                            <div><label style="color:#888;">Chức vụ:</label><p><b>Quản trị viên cấp cao</b></p></div>
-                            <div><label style="color:#888;">Phòng ban:</label><p><b>Phòng Đào tạo - Khối CNTT</b></p></div>
-                            <div><label style="color:#888;">Email:</label><p><b>quantri@school.edu.vn</b></p></div>
-                            <div><label style="color:#888;">Số điện thoại:</label><p><b>0988.XXX.XXX</b></p></div>
-                            <div><label style="color:#888;">Lần đăng nhập cuối:</label><p><b>Vừa xong</b></p></div>
-                        </div>
-                        <button class="btn-auth" style="width: auto; padding: 10px 30px;">Cập nhật hồ sơ</button>
-                    </div>
+           <div id="profile" class="section">
+    <div class="data-card" style="max-width: 800px; margin: 0 auto; display: flex; gap: 40px; align-items: center;">
+        <div style="flex: 1; text-align: center;">
+            <div style="position: relative; display: inline-block;">
+                <img id="profile-img" src="https://ui-avatars.com/api/?name=Admin&size=200&background=1e3799&color=fff" style="width: 200px; height: 200px; border-radius: 50%; border: 8px solid #f1f2f6;">
+                <label for="upload-photo" id="edit-img-btn" style="position: absolute; bottom: 15px; right: 15px; background: var(--accent); color: white; padding: 10px; border-radius: 50%; cursor: pointer; display: none;">
+                    <i class="fas fa-camera"></i>
+                </label>
+                <input type="file" id="upload-photo" style="display:none" onchange="previewImage(event)">
+            </div>
+            <h2 id="display-name" style="margin-top: 20px;">NGUYỄN QUẢN TRỊ</h2>
+            <span class="status-pill">ĐANG HOẠT ĐỘNG</span>
+        </div>
+        
+        <div style="flex: 2; border-left: 1px solid #eee; padding-left: 40px;" id="info-container">
+            <h3>THÔNG TIN CHI TIẾT</h3>
+            <div id="view-mode" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div><label style="color:#888;">Chức vụ:</label><p><b id="view-chucvu">Quản trị viên cấp cao</b></p></div>
+                <div><label style="color:#888;">Phòng ban:</label><p><b id="view-phongban">Phòng Đào tạo - Khối CNTT</b></p></div>
+                <div><label style="color:#888;">Email:</label><p><b id="view-email">quantri@school.edu.vn</b></p></div>
+                <div><label style="color:#888;">Số điện thoại:</label><p><b id="view-phone">0988.XXX.XXX</b></p></div>
+                <div style="grid-column: span 2;">
+                    <button class="btn-auth" style="width: auto; padding: 10px 30px;" onclick="toggleEditProfile(true)">
+                        <i class="fas fa-edit"></i> Cập nhật hồ sơ
+                    </button>
+                </div>
+            </div>
+
+            <div id="edit-mode" style="display: none; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div style="grid-column: span 2;">
+                    <label style="color:#888; font-size: 0.8rem;">Họ và tên</label>
+                    <input type="text" id="edit-name" class="auth-input" style="margin: 5px 0;" value="NGUYỄN QUẢN TRỊ">
+                </div>
+                <div>
+                    <label style="color:#888; font-size: 0.8rem;">Chức vụ</label>
+                    <input type="text" id="edit-chucvu" class="auth-input" style="margin: 5px 0;" value="Quản trị viên cấp cao">
+                </div>
+                <div>
+                    <label style="color:#888; font-size: 0.8rem;">Phòng ban</label>
+                    <input type="text" id="edit-phongban" class="auth-input" style="margin: 5px 0;" value="Phòng Đào tạo - Khối CNTT">
+                </div>
+                <div>
+                    <label style="color:#888; font-size: 0.8rem;">Email</label>
+                    <input type="email" id="edit-email" class="auth-input" style="margin: 5px 0;" value="quantri@school.edu.vn">
+                </div>
+                <div>
+                    <label style="color:#888; font-size: 0.8rem;">Số điện thoại</label>
+                    <input type="text" id="edit-phone" class="auth-input" style="margin: 5px 0;" value="0988.XXX.XXX">
+                </div>
+                <div style="grid-column: span 2; display: flex; gap: 10px; margin-top: 10px;">
+                    <button class="btn-auth" style="background: var(--success); flex: 1;" onclick="saveProfile()">Lưu thay đổi</button>
+                    <button class="btn-auth" style="background: var(--danger); flex: 1;" onclick="toggleEditProfile(false)">Hủy</button>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
     <script>
         // 1. CHUYỂN ĐỔI FORM ĐĂNG NHẬP / ĐĂNG KÝ
