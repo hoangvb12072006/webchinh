@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Portal | Login & Management</title>
+    <title>School Portal | Quản lý & Hệ thống</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -22,7 +22,7 @@
         #auth-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex; justify-content: center; align-items: center; z-index: 999;
+            display: flex; justify-content: center; align-items: center; z-index: 1000;
         }
 
         .auth-container {
@@ -46,10 +46,9 @@
         .auth-footer { margin-top: 20px; font-size: 0.9rem; color: #666; }
         .auth-footer span { color: var(--primary); cursor: pointer; font-weight: bold; }
 
-        /* Giao diện chính (ẩn lúc đầu) */
-        #main-app { display: none; }
+        /* Giao diện chính */
+        #main-app { display: none; } /* Ẩn mặc định, chỉ hiện khi login thành công */
 
-        /* Sidebar & Main Content (Giữ nguyên từ bản trước) */
         .sidebar { width: 260px; height: 100vh; background: var(--primary); color: white; position: fixed; }
         .sidebar-header { padding: 30px 20px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .logo-text { font-size: 1.5rem; font-weight: bold; color: var(--accent); }
@@ -61,6 +60,7 @@
         .main-content { margin-left: 260px; padding: 30px; min-height: 100vh; }
         .section { display: none; }
         .section.active { display: block; animation: fadeIn 0.5s; }
+        
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
@@ -77,30 +77,6 @@
         th { background: #f1f2f6; padding: 15px; text-align: left; position: sticky; top: 0; }
         td { padding: 12px 15px; border-bottom: 1px solid #f1f2f6; }
         .status-pill { padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; background: #e3fcef; color: var(--success); font-weight: bold; }
-
-        /* --- PHẦN MỚI: CSS CHO FORM ĐĂNG NHẬP --- */
-#auth-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(135deg, #1e3799, #4a69bd);
-    display: flex; justify-content: center; align-items: center; z-index: 1000;
-}
-.auth-card {
-    background: white; padding: 40px; border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2); width: 100%; max-width: 400px; text-align: center;
-}
-.auth-card h2 { color: #1e3799; margin-bottom: 25px; }
-.auth-input {
-    width: 100%; padding: 12px; margin: 10px 0;
-    border: 1px solid #ddd; border-radius: 8px; outline: none;
-}
-.btn-auth {
-    width: 100%; padding: 12px; background: #1e3799; color: white;
-    border: none; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 15px;
-}
-.auth-footer { margin-top: 20px; font-size: 0.9rem; }
-.auth-footer span { color: #1e3799; cursor: pointer; font-weight: bold; }
-#main-app { display: none; } /* Ẩn web chính khi chưa đăng nhập */
-        
     </style>
 </head>
 <body>
@@ -108,8 +84,8 @@
     <div id="auth-overlay">
         <div class="auth-container" id="login-form">
             <h2>School Portal</h2>
-            <p style="color: #666; margin-bottom: 20px;">Vui lòng đăng nhập để tiếp tục</p>
-            <input type="text" class="auth-input" placeholder="Tên đăng nhập (Admin)">
+            <p id="auth-desc" style="color: #666; margin-bottom: 20px;">Vui lòng đăng nhập để tiếp tục</p>
+            <input type="text" class="auth-input" placeholder="Tên đăng nhập">
             <input type="password" class="auth-input" placeholder="Mật khẩu">
             <button class="btn-auth" onclick="handleLogin()">ĐĂNG NHẬP</button>
             <div class="auth-footer">
@@ -119,6 +95,7 @@
 
         <div class="auth-container" id="register-form" style="display: none;">
             <h2>Đăng Ký Tài Khoản</h2>
+            <p style="color: #666; margin-bottom: 20px;">Tham gia hệ thống quản lý</p>
             <input type="text" class="auth-input" placeholder="Họ và tên">
             <input type="email" class="auth-input" placeholder="Email">
             <input type="password" class="auth-input" placeholder="Mật khẩu">
@@ -127,22 +104,6 @@
                 Đã có tài khoản? <span onclick="toggleAuth()">Đăng nhập</span>
             </div>
         </div>
-    </div>
-
-    <div id="auth-overlay">
-    <div class="auth-card" id="auth-container">
-        <h2 id="auth-title">School Portal</h2>
-        <p id="auth-desc" style="color: #666; margin-bottom: 20px;">Vui lòng đăng nhập</p>
-        <input type="text" class="auth-input" placeholder="Tên đăng nhập">
-        <input type="password" class="auth-input" placeholder="Mật khẩu">
-        <button class="btn-auth" onclick="handleAuth()">ĐĂNG NHẬP</button>
-        <div class="auth-footer" id="auth-toggle">
-            Chưa có tài khoản? <span onclick="alert('Chức năng đăng ký đang bảo trì!')">Đăng ký ngay</span>
-        </div>
-    </div>
-</div>
-
-<div id="main-app"> 
     </div>
 
     <div id="main-app">
@@ -196,28 +157,7 @@
     </div>
 
     <script>
-
-        /* --- PHẦN MỚI: LOGIC ĐĂNG NHẬP --- */
-function handleAuth() {
-    const btn = document.querySelector('.btn-auth');
-    btn.innerText = "Đang xử lý...";
-    
-    setTimeout(() => {
-        // Ẩn form đăng nhập
-        document.getElementById('auth-overlay').style.display = "none";
-        // Hiện trang web chính
-        document.getElementById('main-app').style.display = "block";
-        // Cho phép cuộn trang
-        document.body.style.overflow = "auto";
-        
-        // Tự động gọi hàm tạo 100 học sinh (nếu hàm đó tên là generateData)
-        if (typeof generateData === "function") {
-            generateData();
-        }
-    }, 800);
-}
-        
-        // Chuyển đổi giữa Đăng nhập và Đăng ký
+        // 1. Chuyển đổi qua lại Login/Register
         function toggleAuth() {
             const login = document.getElementById('login-form');
             const register = document.getElementById('register-form');
@@ -230,24 +170,34 @@ function handleAuth() {
             }
         }
 
-        // Xử lý Đăng nhập
+        // 2. Xử lý Đăng ký thành công
+        function handleRegisterSuccess() {
+            alert("🎉 Đăng ký thành công! Đang chuyển về trang Đăng nhập.");
+            toggleAuth(); // Quay lại form login
+            document.getElementById('auth-desc').innerText = "Vui lòng dùng tài khoản mới để đăng nhập";
+            document.getElementById('auth-desc').style.color = "var(--success)";
+        }
+
+        // 3. Xử lý Đăng nhập thành công
         function handleLogin() {
-            // Hiệu ứng giả lập đang xử lý
-            const btn = document.querySelector('.btn-auth');
+            const btn = document.querySelector('#login-form .btn-auth');
             btn.innerText = "Đang xác thực...";
             
             setTimeout(() => {
+                // Ẩn lớp phủ, hiện app
                 document.getElementById('auth-overlay').style.display = "none";
                 document.getElementById('main-app').style.display = "block";
                 document.body.style.overflow = "auto";
-                generateData(); // Tạo 100 học sinh khi vào app
-            }, 1000);
+                
+                // Nạp 100 học sinh
+                generateData();
+            }, 800);
         }
 
-        // Tạo dữ liệu 100 học sinh (giống bản trước)
+        // 4. Tạo dữ liệu 100 học sinh
         function generateData() {
-            const hos = ["Nguyễn", "Trần", "Lê", "Phạm", "Hoàng"];
-            const tens = ["An", "Bình", "Chiến", "Dũng", "Linh", "Nam", "Việt"];
+            const hos = ["Nguyễn", "Trần", "Lê", "Phạm", "Hoàng", "Vũ", "Đỗ"];
+            const tens = ["An", "Bình", "Chiến", "Dũng", "Linh", "Nam", "Việt", "Trang"];
             const tbody = document.getElementById("studentTableBody");
             let html = "";
             for (let i = 1; i <= 100; i++) {
@@ -257,6 +207,7 @@ function handleAuth() {
             tbody.innerHTML = html;
         }
 
+        // 5. Chuyển Tab
         function showTab(tabId, event) {
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
@@ -264,6 +215,7 @@ function handleAuth() {
             event.currentTarget.classList.add('active');
         }
 
+        // 6. Tìm kiếm
         function filterTable() {
             let filter = document.getElementById("mainSearch").value.toUpperCase();
             let tr = document.getElementById("studentTableBody").getElementsByTagName("tr");
@@ -272,56 +224,6 @@ function handleAuth() {
                 tr[i].style.display = txt.toUpperCase().indexOf(filter) > -1 ? "" : "none";
             }
         }
-
-        // Hàm xử lý khi nhấn Đăng ký thành công
-function handleRegisterSuccess() {
-    alert("🎉 Đăng ký thành công! Hệ thống sẽ chuyển bạn về trang Đăng nhập.");
-    // Quay lại form đăng nhập
-    toggleAuth(); 
-    
-    // Cập nhật thông báo nhỏ cho người dùng biết
-    const authDesc = document.getElementById('auth-desc');
-    if (authDesc) authDesc.innerText = "Vui lòng đăng nhập với tài khoản mới";
-}
-
-// Hàm xử lý khi nhấn Đăng nhập
-function handleAuth() {
-    // 1. Ẩn toàn bộ màn hình đăng nhập
-    const overlay = document.getElementById('auth-overlay');
-    const authContainers = document.querySelectorAll('.auth-container');
-    
-    if (overlay) overlay.style.display = 'none';
-    authContainers.forEach(c => c.style.display = 'none');
-
-    // 2. Hiển thị trang chủ (main-app)
-    const mainApp = document.getElementById('main-app');
-    if (mainApp) {
-        mainApp.style.display = 'block';
-    }
-
-    // 3. Cho phép cuộn trang web
-    document.body.style.overflow = 'auto';
-
-    // 4. Kích hoạt nạp dữ liệu 100 học sinh (nếu hàm này đã có)
-    if (typeof generateData === "function") {
-        generateData();
-    }
-}
-
-// Hàm chuyển đổi qua lại giữa form Login và Register
-function toggleAuth() {
-    const loginForm = document.getElementById('login-form');
-    const registerForm = document.getElementById('register-form');
-    
-    if (loginForm.style.display === "none") {
-        loginForm.style.display = "block";
-        registerForm.style.display = "none";
-    } else {
-        loginForm.style.display = "none";
-        registerForm.style.display = "block";
-    }
-}
-        
     </script>
 </body>
 </html>
