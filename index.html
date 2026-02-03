@@ -122,7 +122,7 @@
             <input type="text" class="auth-input" placeholder="Họ và tên">
             <input type="email" class="auth-input" placeholder="Email">
             <input type="password" class="auth-input" placeholder="Mật khẩu">
-            <button class="btn-auth" onclick="alert('Đăng ký thành công! Vui lòng đăng nhập.')">ĐĂNG KÝ</button>
+            <button class="btn-auth" onclick="handleRegisterSuccess()">ĐĂNG KÝ</button>
             <div class="auth-footer">
                 Đã có tài khoản? <span onclick="toggleAuth()">Đăng nhập</span>
             </div>
@@ -272,6 +272,56 @@ function handleAuth() {
                 tr[i].style.display = txt.toUpperCase().indexOf(filter) > -1 ? "" : "none";
             }
         }
+
+        // Hàm xử lý khi nhấn Đăng ký thành công
+function handleRegisterSuccess() {
+    alert("🎉 Đăng ký thành công! Hệ thống sẽ chuyển bạn về trang Đăng nhập.");
+    // Quay lại form đăng nhập
+    toggleAuth(); 
+    
+    // Cập nhật thông báo nhỏ cho người dùng biết
+    const authDesc = document.getElementById('auth-desc');
+    if (authDesc) authDesc.innerText = "Vui lòng đăng nhập với tài khoản mới";
+}
+
+// Hàm xử lý khi nhấn Đăng nhập
+function handleAuth() {
+    // 1. Ẩn toàn bộ màn hình đăng nhập
+    const overlay = document.getElementById('auth-overlay');
+    const authContainers = document.querySelectorAll('.auth-container');
+    
+    if (overlay) overlay.style.display = 'none';
+    authContainers.forEach(c => c.style.display = 'none');
+
+    // 2. Hiển thị trang chủ (main-app)
+    const mainApp = document.getElementById('main-app');
+    if (mainApp) {
+        mainApp.style.display = 'block';
+    }
+
+    // 3. Cho phép cuộn trang web
+    document.body.style.overflow = 'auto';
+
+    // 4. Kích hoạt nạp dữ liệu 100 học sinh (nếu hàm này đã có)
+    if (typeof generateData === "function") {
+        generateData();
+    }
+}
+
+// Hàm chuyển đổi qua lại giữa form Login và Register
+function toggleAuth() {
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+    
+    if (loginForm.style.display === "none") {
+        loginForm.style.display = "block";
+        registerForm.style.display = "none";
+    } else {
+        loginForm.style.display = "none";
+        registerForm.style.display = "block";
+    }
+}
+        
     </script>
 </body>
 </html>
