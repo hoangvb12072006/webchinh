@@ -1,0 +1,71 @@
+/* style.css - Giao diện HOANGKUN STORE */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #1f1f1f;
+    border-bottom: 2px solid #007bff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+.navbar-brand {
+    font-weight: 800;
+    color: #fff !important;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+.navbar-brand span { color: #007bff; }
+
+/* Các thành phần chung */
+.stats-box {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 15px;
+    transition: transform 0.2s;
+}
+.stats-box:hover {
+    transform: translateY(-5px);
+    border-color: #007bff;
+}
+.stats-icon { font-size: 2rem; color: #007bff; margin-bottom: 10px; }
+.stats-value { font-weight: bold; font-size: 1.2rem; color: #fff; }
+.stats-label { font-size: 0.9rem; color: #aaa; }
+
+.service-card {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 100%;
+}
+.card-header-custom {
+    background-color: #2c2c2c;
+    padding: 15px;
+    border-bottom: 1px solid #444;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.form-control, .form-select {
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+    color: #fff;
+}
+.form-control:focus, .form-select:focus {
+    background-color: #2c2c2c;
+    color: #fff;
+    border-color: #007bff;
+    box-shadow: none;
+}
+
+/* Footer */
+footer {
+    border-top: 2px solid #007bff;
+    margin-top: 50px;
+}
