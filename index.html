@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Shop - Trang Chủ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #6f42c1;
+            --secondary-color: #00d26a;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); }
+        a { text-decoration: none; color: white; }
+        ul { list-style: none; }
+
+        header {
+            background-color: #1a1a1a;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary-color);
+            position: sticky; top: 0; z-index: 100;
+        }
+
+        .logo { font-size: 24px; font-weight: bold; color: var(--primary-color); text-transform: uppercase; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a:hover { color: var(--primary-color); }
+        .btn-login { background-color: var(--primary-color); padding: 8px 20px; border-radius: 5px; font-weight: bold; }
+
+        .hero {
+            text-align: center; padding: 80px 20px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://upload.wikimedia.org/wikipedia/commons/e/e5/Roblox_Logo_2019.png');
+            background-size: cover; background-position: center;
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+        .btn-cta { background-color: var(--secondary-color); padding: 12px 30px; border-radius: 50px; font-weight: bold; display: inline-block; margin-top: 20px;}
+
+        .container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
+        .section-title { text-align: center; margin-bottom: 30px; font-size: 2rem; border-left: 5px solid var(--primary-color); padding-left: 15px; display: inline-block;}
+        .grid-products { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+
+        .card { background-color: var(--card-bg); border-radius: 10px; overflow: hidden; border: 1px solid #333; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); border-color: var(--primary-color); }
+        .card-img { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 50px; color: #555; background: #232526; }
+        .card-body { padding: 15px; text-align: center; }
+        .card-title { font-size: 1.2rem; margin-bottom: 10px; color: white; }
+        .card-price { color: var(--secondary-color); font-weight: bold; display: block; margin-bottom: 15px; }
+        .btn-buy { width: 100%; padding: 10px; background: transparent; border: 2px solid var(--primary-color); color: white; border-radius: 5px; cursor: pointer; transition: 0.3s; }
+        .btn-buy:hover { background-color: var(--primary-color); }
+        
+        footer { background-color: #0f0f0f; text-align: center; padding: 20px; margin-top: 50px; border-top: 1px solid #333; color: #888; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><i class="fas fa-gamepad"></i> ROBLOX SHOP</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">Trang Chủ</a></li>
+                <li><a href="#">Nạp Thẻ</a></li>
+                <li><a href="#">Dịch Vụ</a></li>
+            </ul>
+        </nav>
+        <a href="#" class="btn-login">Đăng Nhập</a>
+    </header>
+
+    <section class="hero">
+        <h1>HỆ THỐNG BÁN ROBUX TỰ ĐỘNG</h1>
+        <p>Uy tín - Giá rẻ - Giao dịch trong 5 giây</p>
+        <a href="#products" class="btn-cta">MUA NGAY</a>
+    </section>
+
+    <div class="container" id="products">
+        <h2 class="section-title">DANH MỤC GAME</h2>
+        <div class="grid-products">
+            <div class="card">
+                <div class="card-img"><i class="fas fa-coins"></i></div>
+                <div class="card-body">
+                    <h3 class="card-title">Mua Robux 120H</h3>
+                    <span class="card-price">Hệ số 8.5</span>
+                    <button class="btn-buy">MUA NGAY</button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img"><i class="fas fa-user-ninja"></i></div>
+                <div class="card-body">
+                    <h3 class="card-title">Acc Blox Fruit VIP</h3>
+                    <span class="card-price">50.000đ</span>
+                    <button class="btn-buy">XEM NGAY</button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img"><i class="fas fa-random"></i></div>
+                <div class="card-body">
+                    <h3 class="card-title">Thử Vận May Acc</h3>
+                    <span class="card-price">10.000đ</span>
+                    <button class="btn-buy">QUAY NGAY</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Shop Robux.</p>
+    </footer>
+
+</body>
+</html>
