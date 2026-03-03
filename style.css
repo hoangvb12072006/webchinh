@@ -69,3 +69,53 @@ footer {
     border-top: 2px solid #007bff;
     margin-top: 50px;
 }
+
+/* --- THÊM VÀO CUỐI FILE style.css --- */
+
+/* Vòng Quay May Mắn */
+.wheel-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 10px solid #fff;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+    transition: transform 4s cubic-bezier(0.25, 0.1, 0.25, 1); /* Hiệu ứng xoay */
+}
+.wheel-section {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background-color: #f00;
+    transform-origin: 100% 100%;
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+/* Mũi tên chỉ vòng quay */
+.wheel-pointer {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; 
+    height: 0; 
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 30px solid #ffcc00;
+    z-index: 10;
+}
+
+/* Trang Đăng Nhập */
+.login-box {
+    background-color: #1f1f1f;
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+.social-login .btn {
+    width: 100%;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
