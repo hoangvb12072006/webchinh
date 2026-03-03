@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nạp Thẻ - HOANGKUN STORE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fa-solid fa-gamepad"></i> HOANGKUN<span>STORE</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Trang Chủ</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="nap-the.html"><i class="fa-solid fa-cart-shopping"></i> Nạp Thẻ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-history"></i> Lịch Sử</a></li>
+                    <li class="nav-item ms-2">
+                        <a href="#" class="btn btn-outline-primary btn-sm mt-1">Đăng Nhập</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="service-card">
+                    <div class="card-header-custom text-center">
+                        <i class="fa-solid fa-credit-card text-warning"></i> NẠP THẺ CÀO TỰ ĐỘNG
+                    </div>
+                    <div class="p-4">
+                        <div class="alert alert-info">
+                            <small><i class="fa-solid fa-circle-info"></i> Ưu tiên nạp thẻ <strong>Viettel</strong> để được xử lý nhanh nhất. Sai mệnh giá mất thẻ.</small>
+                        </div>
+                        
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label">Loại thẻ:</label>
+                                <select class="form-select">
+                                    <option value="">-- Chọn nhà mạng --</option>
+                                    <option value="VIETTEL">Viettel (Ưu tiên)</option>
+                                    <option value="VINAPHONE">Vinaphone</option>
+                                    <option value="MOBIFONE">Mobifone</option>
+                                    <option value="ZING">Zing</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Mệnh giá:</label>
+                                <select class="form-select">
+                                    <option value="">-- Chọn mệnh giá --</option>
+                                    <option value="10000">10.000đ</option>
+                                    <option value="20000">20.000đ</option>
+                                    <option value="50000">50.000đ</option>
+                                    <option value="100000">100.000đ</option>
+                                    <option value="200000">200.000đ</option>
+                                    <option value="500000">500.000đ</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Mã thẻ (PIN):</label>
+                                    <input type="text" class="form-control" placeholder="Nhập mã thẻ dưới lớp tráng bạc">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Số Seri:</label>
+                                    <input type="text" class="form-control" placeholder="Nhập số seri in trên thẻ">
+                                </div>
+                            </div>
+                            
+                            <button type="button" class="btn btn-success w-100 fw-bold py-2 mt-2">NẠP THẺ NGAY</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4 justify-content-center">
+            <div class="col-md-8">
+                <h5 class="text-white mb-3"><i class="fa-solid fa-clock-rotate-left"></i> Thẻ nạp gần đây</h5>
+                <div class="table-responsive">
+                    <table class="table table-dark table-striped text-center">
+                        <thead>
+                            <tr>
+                                <th>Nhà mạng</th>
+                                <th>Mệnh giá</th>
+                                <th>Trạng thái</th>
+                                <th>Thời gian</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>VIETTEL</td>
+                                <td>50.000đ</td>
+                                <td><span class="badge bg-success">Thành công</span></td>
+                                <td>Vừa xong</td>
+                            </tr>
+                            <tr>
+                                <td>MOBIFONE</td>
+                                <td>20.000đ</td>
+                                <td><span class="badge bg-danger">Thẻ sai</span></td>
+                                <td>2 phút trước</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center p-3 mt-4">
+        <p class="mb-0">© 2026 HOANGKUN STORE. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
