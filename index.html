@@ -3,580 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Portal | Hệ Thống Quản Lý Giáo Dục Toàn Diện</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>HOANGKUN STORE - Hệ Thống Bán Robux Tự Động</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        :root {
-            --primary: #1e3799;
-            --secondary: #4a69bd;
-            --accent: #f6b93b;
-            --bg: #f8f9fa;
-            --text: #2f3542;
-            --success: #00b894;
-            --danger: #eb4d4b;
-            --info: #0abde3;
-            --sidebar-width: 280px;
+        /* Tùy chỉnh giao diện Dark Mode */
+        body {
+            background-color: #121212; /* Màu nền đen tối */
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
-        
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; 
-            background: var(--bg); 
-            color: var(--text);
-            overflow: hidden; 
+        /* Navbar */
+        .navbar {
+            background-color: #1f1f1f;
+            border-bottom: 2px solid #007bff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
-
-        /* --- MÀN HÌNH XÁC THỰC (LOGIN/REGISTER) --- */
-        #auth-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(45deg, var(--primary), var(--secondary), #0c2461);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            display: flex; justify-content: center; align-items: center; z-index: 9999;
+        .navbar-brand {
+            font-weight: 800;
+            color: #fff !important;
+            font-size: 1.5rem;
+            text-transform: uppercase;
         }
+        .navbar-brand span { color: #007bff; } /* Màu xanh điểm nhấn */
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Banner */
+        .hero-banner {
+            background: url('https://wallpapers.com/images/hd/roblox-background-l6p8j2p4k2k6k2k6.jpg') no-repeat center center;
+            background-size: cover;
+            height: 350px;
+            position: relative;
+            border-radius: 0 0 10px 10px;
         }
-
-        .auth-card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 50px;
-            border-radius: 25px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-            width: 100%;
-            max-width: 450px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .auth-card h2 { color: var(--primary); font-size: 2rem; margin-bottom: 10px; font-weight: 800; }
-        .auth-card p { color: #666; margin-bottom: 30px; }
-
-        .auth-group { position: relative; margin-bottom: 20px; text-align: left; }
-        .auth-group i { position: absolute; left: 15px; top: 40px; color: var(--primary); }
-
-        .auth-input {
-            width: 100%;
-            padding: 15px 15px 15px 45px;
-            background: #f1f2f6;
-            border: 2px solid transparent;
-            border-radius: 12px;
-            outline: none;
-            font-size: 1rem;
-        }
-
-        .auth-input:focus { border-color: var(--primary); background: white; }
-
-        .btn-auth {
-            width: 100%;
-            padding: 15px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            font-weight: bold;
-            box-shadow: 0 10px 20px rgba(30, 55, 153, 0.3);
-            margin-top: 20px;
-        }
-
-        .btn-auth:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(30, 55, 153, 0.4); }
-
-        .auth-footer { margin-top: 25px; font-size: 0.95rem; }
-        .auth-footer span { color: var(--primary); cursor: pointer; font-weight: bold; text-decoration: underline; }
-
-        /* --- GIAO DIỆN CHÍNH --- */
-        #main-app { display: none; opacity: 0; }
-
-        /* Sidebar */
-        .sidebar {
-            width: var(--sidebar-width);
-            height: 100vh;
-            background: var(--primary);
-            color: white;
-            position: fixed;
-            left: 0; top: 0;
-            box-shadow: 5px 0 15px rgba(0,0,0,0.1);
-            z-index: 100;
-        }
-
-        .sidebar-header {
-            padding: 40px 20px;
-            text-align: center;
-            background: rgba(0,0,0,0.1);
-        }
-
-        .logo-text { font-size: 1.8rem; font-weight: 900; color: var(--accent); letter-spacing: 1px; }
-
-        .menu { list-style: none; padding: 30px 0; margin: 0; }
-        .menu-item {
-            padding: 18px 30px;
-            cursor: pointer;
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
             display: flex;
             align-items: center;
-            font-size: 1.05rem;
-            border-left: 5px solid transparent;
-            opacity: 0.8;
+            justify-content: center;
         }
 
-        .menu-item i { margin-right: 15px; width: 25px; font-size: 1.2rem; }
-        .menu-item:hover, .menu-item.active {
-            opacity: 1;
-            background: rgba(255,255,255,0.1);
-            border-left-color: var(--accent);
-            color: var(--accent);
-        }
-
-        /* Main Content Area */
-        .main-content {
-            margin-left: var(--sidebar-width);
-            padding: 40px;
-            height: 100vh;
-            overflow-y: auto;
-            background: var(--bg);
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-            background: white;
-            padding: 20px 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .user-profile-nav { display: flex; align-items: center; gap: 15px; font-weight: bold; }
-        .user-profile-nav img { width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--accent); }
-
-        /* Sections */
-        .section { display: none; animation: slideUp 0.6s ease; }
-        .section.active { display: block; }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Cards & Tables */
-        .data-card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
-        }
-
-        .table-wrapper {
-            max-height: 600px;
-            overflow-y: auto;
-            border-radius: 10px;
-            border: 1px solid #eee;
-        }
-
-        table { width: 100%; border-collapse: collapse; text-align: left; }
-        th { background: #f8f9fa; padding: 18px; position: sticky; top: 0; z-index: 5; border-bottom: 2px solid #eee; }
-        td { padding: 15px 18px; border-bottom: 1px solid #f1f2f6; }
-        tr:hover { background: #fcfcfc; }
-
-        .status-pill {
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            background: #e3fcef;
-            color: var(--success);
-        }
-
-        .grade-badge {
-            padding: 5px 12px;
+        /* Stats Bar (Thanh thống kê 4 ô) */
+        .stats-box {
+            background-color: #1f1f1f;
+            border: 1px solid #333;
             border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 15px;
+            transition: transform 0.2s;
+        }
+        .stats-box:hover {
+            transform: translateY(-5px);
+            border-color: #007bff;
+        }
+        .stats-icon {
+            font-size: 2rem;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .stats-value {
             font-weight: bold;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+        .stats-label {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Card Dịch Vụ */
+        .service-card {
+            background-color: #1f1f1f;
+            border: 1px solid #333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .card-header-custom {
+            background-color: #2c2c2c;
+            padding: 15px;
+            border-bottom: 1px solid #444;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .tab-btn {
+            background: none;
+            border: none;
+            color: #aaa;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-bottom: 2px solid transparent;
+        }
+        .tab-btn.active {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+        }
+
+        /* Form nhập liệu */
+        .form-control {
+            background-color: #2c2c2c;
+            border: 1px solid #444;
+            color: #fff;
+        }
+        .form-control:focus {
+            background-color: #2c2c2c;
+            color: #fff;
+            border-color: #007bff;
+            box-shadow: none;
+        }
+
+        /* Sidebar Hoạt động gần đây */
+        .activity-item {
+            background-color: #252525;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            border-left: 3px solid #28a745; /* Màu xanh lá */
+        }
+        .user-name { font-weight: bold; color: #fff; }
+        .time-ago { font-size: 0.8rem; color: #888; float: right; }
+        .action-text { color: #28a745; font-size: 0.9rem; }
+
+        /* Nút bấm */
+        .btn-buy {
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            border: none;
+            width: 100%;
+            padding: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 15px;
+        }
+        .btn-buy:hover {
+            opacity: 0.9;
             color: white;
         }
-        .grade-a { background: var(--success); }
-        .grade-b { background: var(--info); }
-        .grade-c { background: var(--accent); }
-
-        .search-container { margin-bottom: 25px; position: relative; }
-        .search-container i { position: absolute; left: 20px; top: 18px; color: #999; }
-        .big-search {
-            width: 100%;
-            padding: 15px 15px 15px 50px;
-            border-radius: 15px;
-            border: 2px solid #eee;
-            font-size: 1rem;
-            outline: none;
-        }
-        .big-search:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(30,55,153,0.1); }
-
     </style>
 </head>
 <body>
 
-    <div id="auth-overlay">
-        <div class="auth-card" id="login-form">
-            <h2>School Portal</h2>
-            <p>Hệ thống quản lý giáo dục thông minh v2.0</p>
-            
-            <div class="auth-group">
-                <label>Tên đăng nhập</label><br>
-                <i class="fas fa-user"></i>
-                <input type="text" class="auth-input" id="login-user" placeholder="Nhập username...">
-            </div>
-
-            <div class="auth-group">
-                <label>Mật khẩu</label><br>
-                <i class="fas fa-lock"></i>
-                <input type="password" class="auth-input" id="login-pass" placeholder="••••••••">
-            </div>
-
-            <button class="btn-auth" onclick="handleLogin()">XÁC NHẬN ĐĂNG NHẬP</button>
-            
-            <div class="auth-footer">
-                Bạn là thành viên mới? <span onclick="toggleAuth()">Đăng ký tài khoản ngay</span>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fa-solid fa-gamepad"></i> HOANGKUN<span>STORE</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Trang Chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i> Nạp Thẻ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-history"></i> Lịch Sử</a></li>
+                    <li class="nav-item ms-2">
+                        <a href="#" class="btn btn-outline-primary btn-sm mt-1">Đăng Nhập</a>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
 
-        <div class="auth-card" id="register-form" style="display: none;">
-            <h2>Tạo Tài Khoản</h2>
-            <p>Đăng ký để sử dụng đầy đủ tính năng hệ thống</p>
-            
-            <div class="auth-group">
-                <label>Họ và tên cán bộ</label><br>
-                <i class="fas fa-id-card"></i>
-                <input type="text" class="auth-input" placeholder="Ví dụ: Nguyễn Văn A">
-            </div>
-
-            <div class="auth-group">
-                <label>Email công vụ</label><br>
-                <i class="fas fa-envelope"></i>
-                <input type="email" class="auth-input" placeholder="admin@school.edu.vn">
-            </div>
-
-            <div class="auth-group">
-                <label>Thiết lập mật khẩu</label><br>
-                <i class="fas fa-key"></i>
-                <input type="password" class="auth-input" placeholder="Tối thiểu 8 ký tự">
-            </div>
-
-            <button class="btn-auth" onclick="handleRegisterSuccess()">HOÀN TẤT ĐĂNG KÝ</button>
-            
-            <div class="auth-footer">
-                Đã có tài khoản quản trị? <span onclick="toggleAuth()">Quay lại Đăng nhập</span>
+    <div class="container mt-3">
+        <div class="hero-banner">
+            <div class="hero-overlay">
+                <div class="text-center">
+                    <h1 class="fw-bold text-white display-5">HỆ THỐNG ROBUX TỰ ĐỘNG</h1>
+                    <p class="lead text-white">Uy tín - Giá Rẻ - Xử lý trong 5s</p>
+                    <button class="btn btn-primary btn-lg rounded-pill px-4">MUA NGAY</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="main-app">
-        <nav class="sidebar">
-            <div class="sidebar-header">
-                <div class="logo-text">SCHOOL PORTAL</div>
-                <p style="font-size: 0.8rem; margin-top: 5px; opacity: 0.7;">MANAGEMENT SYSTEM</p>
-            </div>
-            
-            <ul class="menu">
-                <li class="menu-item active" onclick="showTab('home', event)">
-                    <i class="fas fa-th-large"></i> Bảng điều khiển
-                </li>
-                <li class="menu-item" onclick="showTab('students', event)">
-                    <i class="fas fa-user-graduate"></i> Tra soát học sinh
-                </li>
-                <li class="menu-item" onclick="showTab('grades', event)">
-                    <i class="fas fa-file-invoice"></i> Điểm học kỳ chi tiết
-                </li>
-                <li class="menu-item" onclick="showTab('profile', event)">
-                    <i class="fas fa-user-cog"></i> Trang cá nhân Admin
-                </li>
-                <li class="menu-item" onclick="location.reload()" style="margin-top: 100px; color: #ff7675;">
-                    <i class="fas fa-power-off"></i> Thoát hệ thống
-                </li>
-            </ul>
-        </nav>
-
-        <div class="main-content">
-            <header>
-                <div id="dynamic-title"><h2 style="margin:0;">Bảng điều khiển</h2></div>
-                <div class="user-profile-nav">
-                    <span>Cán bộ: <b>Nguyễn Quản Trị</b></span>
-                    <img src="https://ui-avatars.com/api/?name=Admin&background=1e3799&color=fff" alt="avatar">
-                </div>
-            </header>
-
-            <div id="home" class="section active">
-                <div class="data-card" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white;">
-                    <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Xin chào, Admin!</h1>
-                    <p style="font-size: 1.1rem; opacity: 0.9;">Hệ thống ghi nhận hôm nay có 24 yêu cầu tra soát mới từ phòng đào tạo.</p>
-                </div>
-                
-                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
-                    <div class="data-card" style="text-align: center; border-bottom: 5px solid var(--primary);">
-                        <i class="fas fa-users" style="font-size: 2rem; color: var(--primary);"></i>
-                        <h3>2,450</h3><p>Tổng học sinh</p>
-                    </div>
-                    <div class="data-card" style="text-align: center; border-bottom: 5px solid var(--success);">
-                        <i class="fas fa-check-circle" style="font-size: 2rem; color: var(--success);"></i>
-                        <h3>98%</h3><p>Hoàn thành điểm</p>
-                    </div>
-                    <div class="data-card" style="text-align: center; border-bottom: 5px solid var(--accent);">
-                        <i class="fas fa-star" style="font-size: 2rem; color: var(--accent);"></i>
-                        <h3>120</h3><p>Học sinh tiêu biểu</p>
-                    </div>
-                    <div class="data-card" style="text-align: center; border-bottom: 5px solid var(--danger);">
-                        <i class="fas fa-exclamation-triangle" style="font-size: 2rem; color: var(--danger);"></i>
-                        <h3>5</h3><p>Cảnh báo học vụ</p>
-                    </div>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-3 col-6">
+                <div class="stats-box">
+                    <div class="stats-icon"><i class="fa-solid fa-money-bill-wave"></i></div>
+                    <div class="stats-value">10k = 80R$</div>
+                    <div class="stats-label">Bảng Giá Robux</div>
                 </div>
             </div>
-
-            <div id="students" class="section">
-                <div class="data-card">
-                    <div class="search-container">
-                        <i class="fas fa-search"></i>
-                        <input type="text" id="searchStu" class="big-search" placeholder="Nhập tên, mã số hoặc lớp để tra soát nhanh 100 học sinh..." onkeyup="filterTable('stuBody', 'searchStu')">
-                    </div>
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>STT</th>
-                                    <th>MÃ HỌC SINH</th>
-                                    <th>HỌ VÀ TÊN CHI TIẾT</th>
-                                    <th>LỚP NIÊN CHẾ</th>
-                                    <th>TRẠNG THÁI HỌC VỤ</th>
-                                </tr>
-                            </thead>
-                            <tbody id="stuBody">
-                                </tbody>
-                        </table>
-                    </div>
+            <div class="col-md-3 col-6">
+                <div class="stats-box">
+                    <div class="stats-icon"><i class="fa-solid fa-tags"></i></div>
+                    <div class="stats-value">Game Pass</div>
+                    <div class="stats-label">Duyệt 120H</div>
                 </div>
             </div>
-
-            <div id="grades" class="section">
-                <div class="data-card">
-                    <div class="search-container">
-                        <i class="fas fa-filter"></i>
-                        <input type="text" id="searchGra" class="big-search" placeholder="Tra cứu điểm số chi tiết từng môn..." onkeyup="filterTable('graBody', 'searchGra')">
-                    </div>
-                    <div class="table-wrapper">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>MÃ SV</th>
-                                    <th>HỌ VÀ TÊN</th>
-                                    <th>TOÁN HỌC</th>
-                                    <th>NGỮ VĂN</th>
-                                    <th>NGOẠI NGỮ</th>
-                                    <th>ĐIỂM TRUNG BÌNH</th>
-                                    <th>XẾP LOẠI</th>
-                                </tr>
-                            </thead>
-                            <tbody id="graBody">
-                                </tbody>
-                        </table>
-                    </div>
+            <div class="col-md-3 col-6">
+                <div class="stats-box">
+                    <div class="stats-icon"><i class="fa-solid fa-database"></i></div>
+                    <div class="stats-value text-success">56,209 R$</div>
+                    <div class="stats-label">Kho Robux</div>
                 </div>
             </div>
-
-           <div id="profile" class="section">
-    <div class="data-card" style="max-width: 800px; margin: 0 auto; display: flex; gap: 40px; align-items: center;">
-        <div style="flex: 1; text-align: center;">
-            <div style="position: relative; display: inline-block;">
-                <img id="profile-img" src="https://ui-avatars.com/api/?name=Admin&size=200&background=1e3799&color=fff" style="width: 200px; height: 200px; border-radius: 50%; border: 8px solid #f1f2f6;">
-                <label for="upload-photo" id="edit-img-btn" style="position: absolute; bottom: 15px; right: 15px; background: var(--accent); color: white; padding: 10px; border-radius: 50%; cursor: pointer; display: none;">
-                    <i class="fas fa-camera"></i>
-                </label>
-                <input type="file" id="upload-photo" style="display:none" onchange="previewImage(event)">
-            </div>
-            <h2 id="display-name" style="margin-top: 20px;">NGUYỄN QUẢN TRỊ</h2>
-            <span class="status-pill">ĐANG HOẠT ĐỘNG</span>
-        </div>
-        
-        <div style="flex: 2; border-left: 1px solid #eee; padding-left: 40px;" id="info-container">
-            <h3>THÔNG TIN CHI TIẾT</h3>
-            <div id="view-mode" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div><label style="color:#888;">Chức vụ:</label><p><b id="view-chucvu">Quản trị viên cấp cao</b></p></div>
-                <div><label style="color:#888;">Phòng ban:</label><p><b id="view-phongban">Phòng Đào tạo - Khối CNTT</b></p></div>
-                <div><label style="color:#888;">Email:</label><p><b id="view-email">quantri@school.edu.vn</b></p></div>
-                <div><label style="color:#888;">Số điện thoại:</label><p><b id="view-phone">0988.XXX.XXX</b></p></div>
-                <div style="grid-column: span 2;">
-                    <button class="btn-auth" style="width: auto; padding: 10px 30px;" onclick="toggleEditProfile(true)">
-                        <i class="fas fa-edit"></i> Cập nhật hồ sơ
-                    </button>
-                </div>
-            </div>
-
-            <div id="edit-mode" style="display: none; grid-template-columns: 1fr 1fr; gap: 15px;">
-                <div style="grid-column: span 2;">
-                    <label style="color:#888; font-size: 0.8rem;">Họ và tên</label>
-                    <input type="text" id="edit-name" class="auth-input" style="margin: 5px 0;" value="NGUYỄN QUẢN TRỊ">
-                </div>
-                <div>
-                    <label style="color:#888; font-size: 0.8rem;">Chức vụ</label>
-                    <input type="text" id="edit-chucvu" class="auth-input" style="margin: 5px 0;" value="Quản trị viên cấp cao">
-                </div>
-                <div>
-                    <label style="color:#888; font-size: 0.8rem;">Phòng ban</label>
-                    <input type="text" id="edit-phongban" class="auth-input" style="margin: 5px 0;" value="Phòng Đào tạo - Khối CNTT">
-                </div>
-                <div>
-                    <label style="color:#888; font-size: 0.8rem;">Email</label>
-                    <input type="email" id="edit-email" class="auth-input" style="margin: 5px 0;" value="quantri@school.edu.vn">
-                </div>
-                <div>
-                    <label style="color:#888; font-size: 0.8rem;">Số điện thoại</label>
-                    <input type="text" id="edit-phone" class="auth-input" style="margin: 5px 0;" value="0988.XXX.XXX">
-                </div>
-                <div style="grid-column: span 2; display: flex; gap: 10px; margin-top: 10px;">
-                    <button class="btn-auth" style="background: var(--success); flex: 1;" onclick="saveProfile()">Lưu thay đổi</button>
-                    <button class="btn-auth" style="background: var(--danger); flex: 1;" onclick="toggleEditProfile(false)">Hủy</button>
+            <div class="col-md-3 col-6">
+                <div class="stats-box">
+                    <div class="stats-icon"><i class="fa-solid fa-users"></i></div>
+                    <div class="stats-value">12,500+</div>
+                    <div class="stats-label">Khách Hàng</div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
+    <div class="container mt-4 mb-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="service-card">
+                    <div class="card-header-custom d-flex">
+                        <button class="tab-btn active">MUA ROBUX (GAMEPASS)</button>
+                        <button class="tab-btn">CÀY THUÊ</button>
+                    </div>
+                    <div class="p-4">
+                        <div class="alert alert-warning" role="alert">
+                            <i class="fa-solid fa-triangle-exclamation"></i> 
+                            <strong>Lưu ý:</strong> Vui lòng tạo Gamepass đúng giá trị trước khi mua. Đơn hàng sẽ được duyệt tự động sau 3-5s.
+                        </div>
+
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label text-secondary">Chọn gói Robux cần mua:</label>
+                                <select class="form-control" id="robuxPackage" onchange="calculatePrice()">
+                                    <option value="0">-- Chọn gói --</option>
+                                    <option value="80" data-price="10000">80 Robux (10,000đ)</option>
+                                    <option value="160" data-price="20000">160 Robux (20,000đ)</option>
+                                    <option value="400" data-price="50000">400 Robux (50,000đ)</option>
+                                    <option value="800" data-price="100000">800 Robux (100,000đ)</option>
+                                    <option value="1700" data-price="200000">1,700 Robux (200,000đ)</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-secondary">Nhập ID GamePass:</label>
+                                <input type="text" class="form-control" placeholder="Ví dụ: 12345678">
+                            </div>
+
+                            <div class="bg-dark p-3 rounded border border-secondary mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span>Thanh toán:</span>
+                                    <span class="fw-bold text-primary" id="priceDisplay">0 VNĐ</span>
+                                </div>
+                                <div class="d-flex justify-content-between mt-2">
+                                    <span>Thực nhận:</span>
+                                    <span class="fw-bold text-success" id="robuxDisplay">0 R$</span>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-primary btn-buy">THANH TOÁN NGAY</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="service-card h-100">
+                    <div class="card-header-custom text-center">
+                        <i class="fa-solid fa-bolt text-warning"></i> HOẠT ĐỘNG GẦN ĐÂY
+                    </div>
+                    <div class="p-3" style="max-height: 400px; overflow-y: auto;">
+                        <div class="activity-item">
+                            <div><span class="user-name">hoangkun***</span> <span class="time-ago">Vừa xong</span></div>
+                            <div class="action-text">Đã mua thành công gói 400 Robux</div>
+                        </div>
+                        <div class="activity-item">
+                            <div><span class="user-name">minhquan***</span> <span class="time-ago">1 phút trước</span></div>
+                            <div class="action-text">Đã mua thành công gói 80 Robux</div>
+                        </div>
+                        <div class="activity-item">
+                            <div><span class="user-name">linhchi99</span> <span class="time-ago">3 phút trước</span></div>
+                            <div class="action-text">Đã nạp thẻ Viettel 50k</div>
+                        </div>
+                        <div class="activity-item">
+                            <div><span class="user-name">gamevui24h</span> <span class="time-ago">5 phút trước</span></div>
+                            <div class="action-text">Đã mua Acc Blox Fruit Max Level</div>
+                        </div>
+                        <div class="activity-item">
+                            <div><span class="user-name">khachvanglai</span> <span class="time-ago">10 phút trước</span></div>
+                            <div class="action-text">Đã quay vòng quay may mắn</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center p-3 mt-4" style="border-top: 2px solid #007bff;">
+        <p class="mb-0">© 2026 HOANGKUN STORE. All rights reserved.</p>
+        <small class="text-muted">Vận hành bởi Nguyễn Việt Hoàng - Hai Phong</small>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script>
-        // 1. CHUYỂN ĐỔI FORM ĐĂNG NHẬP / ĐĂNG KÝ
-        function toggleAuth() {
-            const loginForm = document.getElementById('login-form');
-            const registerForm = document.getElementById('register-form');
+        function calculatePrice() {
+            var selectBox = document.getElementById("robuxPackage");
+            var selectedOption = selectBox.options[selectBox.selectedIndex];
             
-            if (loginForm.style.display === "none") {
-                loginForm.style.display = "block";
-                registerForm.style.display = "none";
+            var price = selectedOption.getAttribute("data-price");
+            var robux = selectedOption.value;
+
+            if (price) {
+                // Định dạng tiền tệ VNĐ
+                var formattedPrice = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+                
+                document.getElementById("priceDisplay").innerText = formattedPrice;
+                document.getElementById("robuxDisplay").innerText = robux + " R$";
             } else {
-                loginForm.style.display = "none";
-                registerForm.style.display = "block";
-            }
-        }
-
-        // 2. XỬ LÝ ĐĂNG KÝ THÀNH CÔNG
-        function handleRegisterSuccess() {
-            alert("✨ HỆ THỐNG THÔNG BÁO:\nChúc mừng bạn đã tạo tài khoản quản trị thành công.\nVui lòng đăng nhập để bắt đầu phiên làm việc.");
-            toggleAuth(); // Tự động quay về form đăng nhập
-        }
-
-        // 3. XỬ LÝ ĐĂNG NHẬP THÀNH CÔNG
-        function handleLogin() {
-            const btn = document.querySelector('#login-form .btn-auth');
-            btn.innerText = "ĐANG XÁC THỰC DANH TÍNH...";
-            btn.disabled = true;
-
-            setTimeout(() => {
-                // Ẩn overlay và hiện app
-                const overlay = document.getElementById('auth-overlay');
-                const app = document.getElementById('main-app');
-                
-                overlay.style.transition = "all 0.8s ease";
-                overlay.style.opacity = "0";
-                
-                setTimeout(() => {
-                    overlay.style.display = "none";
-                    app.style.display = "block";
-                    setTimeout(() => app.style.opacity = "1", 50);
-                    document.body.style.overflow = "auto";
-                    
-                    // Nạp 100 học sinh và điểm ngay khi vào
-                    initDatabase();
-                }, 800);
-            }, 1200);
-        }
-
-        // 4. KHỞI TẠO DỮ LIỆU ĐỒ SỘ (100 HỌC SINH & ĐIỂM)
-        function initDatabase() {
-            const hoNames = ["Nguyễn", "Trần", "Lê", "Phạm", "Hoàng", "Phan", "Vũ", "Đặng", "Bùi", "Đỗ"];
-            const demNames = ["Văn", "Thị", "Minh", "Đức", "Thanh", "Anh", "Ngọc", "Gia", "Hữu"];
-            const tenNames = ["An", "Bình", "Cường", "Dũng", "Em", "Giang", "Hùng", "Khánh", "Linh", "Nam", "Sơn", "Tùng", "Vinh"];
-            
-            let stuHtml = "";
-            let graHtml = "";
-
-            for (let i = 1; i <= 100; i++) {
-                // Tạo tên ngẫu nhiên dài và đẹp
-                const fullNm = hoNames[Math.floor(Math.random()*hoNames.length)] + " " + 
-                               demNames[Math.floor(Math.random()*demNames.length)] + " " + 
-                               tenNames[Math.floor(Math.random()*tenNames.length)];
-                
-                const code = "2026-SV" + i.toString().padStart(3, '0');
-                const classNm = "Lớp 10A" + (Math.floor(Math.random()*5) + 1);
-                
-                // Phần Tra soát học sinh
-                stuHtml += `
-                    <tr>
-                        <td>${i}</td>
-                        <td><b style="color:var(--primary)">${code}</b></td>
-                        <td><b>${fullNm}</b></td>
-                        <td>${classNm}</td>
-                        <td><span class="status-pill">Đang học tập</span></td>
-                    </tr>
-                `;
-
-                // Phần Điểm học kỳ
-                const d1 = (Math.random() * 4 + 6).toFixed(1);
-                const d2 = (Math.random() * 4 + 6).toFixed(1);
-                const d3 = (Math.random() * 4 + 6).toFixed(1);
-                const avg = ((parseFloat(d1) + parseFloat(d2) + parseFloat(d3)) / 3).toFixed(1);
-                
-                let rank = "KHÁ";
-                let colorClass = "grade-c";
-                if (avg >= 8.5) { rank = "GIỎI"; colorClass = "grade-a"; }
-                else if (avg >= 7.0) { rank = "KHÁ"; colorClass = "grade-b"; }
-
-                graHtml += `
-                    <tr>
-                        <td>${code}</td>
-                        <td><b>${fullNm}</b></td>
-                        <td>${d1}</td>
-                        <td>${d2}</td>
-                        <td>${d3}</td>
-                        <td><b style="color:var(--primary)">${avg}</b></td>
-                        <td><span class="grade-badge ${colorClass}">${rank}</span></td>
-                    </tr>
-                `;
-            }
-
-            document.getElementById('stuBody').innerHTML = stuHtml;
-            document.getElementById('graBody').innerHTML = graHtml;
-        }
-
-        // 5. CHỨC NĂNG CHUYỂN TAB
-        function showTab(tabId, event) {
-            // Ẩn tất cả section
-            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-            // Hiện section được chọn
-            document.getElementById(tabId).classList.add('active');
-            
-            // Cập nhật Menu sidebar
-            document.querySelectorAll('.menu-item').forEach(item => item.classList.remove('active'));
-            event.currentTarget.classList.add('active');
-
-            // Đổi tiêu đề header linh hoạt
-            document.getElementById('dynamic-title').innerHTML = `<h2 style="margin:0;">${event.currentTarget.innerText.trim()}</h2>`;
-        }
-
-        // 6. CHỨC NĂNG TÌM KIẾM TRA SOÁT (FILTER)
-        function filterTable(tableBodyId, inputId) {
-            const filterText = document.getElementById(inputId).value.toUpperCase();
-            const tableBody = document.getElementById(tableBodyId);
-            const rows = tableBody.getElementsByTagName("tr");
-
-            for (let i = 0; i < rows.length; i++) {
-                const textContent = rows[i].textContent || rows[i].innerText;
-                if (textContent.toUpperCase().indexOf(filterText) > -1) {
-                    rows[i].style.display = "";
-                } else {
-                    rows[i].style.display = "none";
-                }
+                document.getElementById("priceDisplay").innerText = "0 VNĐ";
+                document.getElementById("robuxDisplay").innerText = "0 R$";
             }
         }
     </script>
